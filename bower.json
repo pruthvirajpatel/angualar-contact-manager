@@ -1,0 +1,17 @@
+{
+  "name": "angular-contact-manager",
+  "description": "Angular js contact manager",
+  "main": "index.js",
+  "authors": [
+    "Pruthviraj Patel <pruthviraj@lendingkart.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/pruthvirajpatel/angualar-contact-manager",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
