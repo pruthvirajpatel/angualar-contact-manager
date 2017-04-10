@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contact Manager</title>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="app/css/main.css" rel="stylesheet">
-  </head>
-  <body>
+    <link href="app/styles/css/main.css" rel="stylesheet">
+</head>
+
+<body ng-app="contact-manager">
     <header class="bs-header">
-      <div class="container">
-        <h1>Contact Manager</h1>
-        <p>Contact manager example application</p>
-      </div>
+        <div class="container">
+            <h1>Contact Manager</h1>
+            <p>Contact manager example application</p>
+        </div>
     </header>
     <div class="container">
-        <ui-view /> 
+        <ui-view/>
     </div>
-
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  </body>
+    <script src="app/app.js"></script>
+    <script src="app/contacts-list/contacts-list.controller.js"></script>
+    <script src="app/contacts-list/contacts-list.service.js"></script>
+    <script src="app/create-contact/create-contact.controller.js"></script>
+    <script src="app/create-contact/create-contact.service.js"></script>
+</body>
+
 </html>
