@@ -32,6 +32,9 @@ app.service('ContactService', [function() {
         email: 'RodolfoPRobinett@jourrapide.com'
     }];
 
+    this.getContact = function(index) {
+        return contacts[index];
+    };
     this.getContacts = function() {
         return contacts;
     };
