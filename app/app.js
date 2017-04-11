@@ -7,7 +7,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: 'app/contacts-list/contacts-list.html'
         })
         .state('create', {
-            url: '/create',
+            url: '/create?index',
             controller: 'CreateContactController as vm',
             templateUrl: 'app/create-contact/create-contact.html'
         });

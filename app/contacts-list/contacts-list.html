@@ -6,19 +6,19 @@
                 <a href="#!/create" class="btn btn-lg btn-outline">Add Contact</a>
             </p>
             <ul class="media-list row contacts-container">
-                <li class="media col-md-6 col-lg-4">
+                <li class="media col-md-6 col-lg-4" ng-repeat="cData in vm.contacts track by $index">
                     <div class="thumbnail">
                         <img class="media-object" src="app/styles/img/faces/1.jpg">
                     </div>
                     <div class="media-heading">
-                        <h3>Terrence S. Hatfield<small><a href="#contacts/edit/1"><span class="glyphicon glyphicon-pencil"></span></a><a href="#contacts/delete/1" class="delete-contract"><span class="glyphicon glyphicon-trash"></span></a></small></h3>
+                        <h3>{{cData.name}}<small><a ui-sref="create({index:$index})"><span class="glyphicon glyphicon-pencil"></span></a><a ng-click="vm.delete($index)" class="delete-contract"><span class="glyphicon glyphicon-trash"></span></a></small></h3>
                     </div>
                     <div class="media-body">
                         <dl>
                             <dt>Phone Number:</dt>
-                            <dd>651-603-1723</dd>
+                            <dd>{{cData.tell}}</dd>
                             <dt>Email:</dt>
-                            <dd>TerrenceSHatfield@rhyta.com</dd>
+                            <dd>{{cData.email}}</dd>
                         </dl>
                     </div>
                     <hr>
