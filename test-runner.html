@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-mocks.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/common/contact-service.service.js"></script>
+    <script src="app/contacts-list/contacts-list.controller.js"></script>
+    <script src="app/create-contact/create-contact.controller.js"></script>
+    <script>
+    describe('Contacts List', function() {
+
+        beforeEach(angular.mock.module('contact-manager'));
+
+        var $controller,ContactService;
+
+        beforeEach(angular.mock.inject(function(_$controller_,_ContactService_) {
+            $controller = _$controller_;
+            ContactService = _ContactService_;
+        }));
+
+        describe('Contact List Page', function() {
+            it('Check intial contacts', function() {
+                var $scope = {};
+                var vm = $controller('ContactController', {
+                    $scope: $scope
+                });
+                expect(vm.contacts.length).toBe(6);
+            });
+            it('Delete contact', function() {
+                var $scope = {};
+                var vm = $controller('ContactController', {
+                    $scope: $scope,
+                    ContactService:ContactService
+                });
+                var length = vm.contacts.length;
+                vm.delete(1);
+                expect(vm.contacts.length).toBe(length - 1);
+            });
+        });
+
+        describe('Edit Contact List Page', function() {
+            it('Add contact', function() {
+                var $scope = {};
+                var vm = $controller('CreateContactController', {
+                    $scope: $scope,
+                    ContactService:ContactService
+                });
+                vm.user = {
+                    id: 2,
+                    name: 'Testing',
+                    tel: '8543758357',
+                    email: 'ChrisvksfjkMManning@dayrep.com'
+                };
+                var contacts = ContactService.getContacts();
+                vm.addContact(vm.user);
+               expect(ContactService.getContacts().length).toBe(contacts.length); 
+            });
+            it('Edit contact', function() {
+                var $scope = {};
+                var vm = $controller('CreateContactController', {
+                    $scope: $scope,
+                    ContactService:ContactService
+                });
+                var user = {
+                    name: 'Testing',
+                    tel: '8543758357',
+                    email: 'ChrisvksfjkMManning@dayrep.com'
+                };
+                var contacts = ContactService.getContacts();
+                vm.addContact(user,1);
+               expect(ContactService.getContacts().length).toBe(contacts.length); 
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+</body>
+</html>

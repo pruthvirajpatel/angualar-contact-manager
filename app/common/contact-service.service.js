@@ -39,14 +39,18 @@ app.service('ContactService', [function() {
         return contacts;
     };
 
-    this.addContact = function(data) {
-    	data.id = contacts.length +1;
-        contacts.push(data);
+    this.addContact = function(data,index) {
+        if (index) {
+            contacts[index] = data
+        } else {
+            data.id = contacts.length + 1;
+            contacts.push(data);
+        }
         return;
     };
 
     this.deleteContact = function(index) {
-        contacts.splice(index,1);
+        contacts.splice(index, 1);
         return
     };
 }]);
